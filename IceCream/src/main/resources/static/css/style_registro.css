@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d1e0ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor {
+    display: flex;
+    width: 100%;
+    height: 550px;
+    max-width: 850px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 21px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.imagen-box {
+    width: 50%;
+    background: url('/img/fondo_inicio.png') no-repeat center;
+    background-size: cover;
+    border-radius: 20px 0 0 20px;
+    position: relative;
+}
+
+#titulo {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.registro-box {
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.registro-box h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.registro-box label {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.registro-box input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.registro-box button {
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+}
+
+.registro-box p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.registro-box p a {
+    color: #333;
+    text-decoration: none;
+}
+
+.registro-box p a:hover {
+    text-decoration: underline;
+}
+
+

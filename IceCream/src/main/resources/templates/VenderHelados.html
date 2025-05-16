@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vender Helados</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/CSS_VenderHelados.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="box">
+
+            <h1 style="text-align: center;" class="titulo">
+                <img src="/img/helado cool.png" class="marca" alt="Marca Helado">
+                <img src="/img/titulo.png" alt="Título Heladería">
+            </h1>
+
+            <form id="ventaForm" action="/venderHelados" method="post">
+                <h2>Vender Helados</h2>
+
+                <div class="modal-body">
+                    <div class="formVender">
+                        <label for="tipoFiltro" class="form-label">Filtrar por tipo:</label>
+                        <select id="tipoFiltro" class="form-select" onchange="filtrarPorTipo()">
+                            <option value="todos">Todos</option>
+                            <option value="cono">Cono</option>
+                            <option value="paleta">Paleta</option>
+                            <option value="vaso">Vaso</option>
+                            <option value="galleta">Galleta</option>
+                        </select>
+                    </div>
+
+                    <div th:if="${mensaje}" class="alert alert-success mt-2" role="alert">
+                        <span th:text="${mensaje}"></span>
+                    </div>
+                    <div th:if="${error}" class="alert alert-danger mt-2" role="alert">
+                        <span th:text="${error}"></span>
+                    </div>
+                    <div id="errorGlobal" class="alert alert-danger mt-2" style="display:none;"></div>
+
+
+                    <h4 class="mt-4">Helados Disponibles:</h4>
+                    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3 mb-4" id="galeriaHelados">
+                        <th:block th:each="helado : ${helados}">
+                            <div class="col helado-col" th:data-tipo="${helado.tipo}">
+                                <div class="card h-100 helado-card" th:data-nombre="${helado.nombre}"
+                                    th:data-unidades="${helado.unidades}" th:data-precio="${helado.precio}"
+                                    th:data-tipo-helado="${helado.tipo}">
+                                    <div class="card-body p-2 text-center">
+                                        <h6 class="card-title m-0" th:text="${helado.nombre}">Sabor</h6>
+                                    </div>
+
+                                    <img th:src="@{'/img/' + ${helado.tipo} + '.png'}"
+                                        onerror="this.onerror=null; this.src='/img/default.png';"
+                                        class="card-img-top helado-img p-2" alt="helado"
+                                        style="max-height: 100px; object-fit: contain;">
+
+                                    <div class="card-body p-2 text-center">
+                                        <p class="card-text m-0"
+                                            th:text="'$' + ${#numbers.formatDecimal(helado.precio, 1, 'POINT', 2, 'COMMA')}">
+                                        </p>
+                                        <p class="card-text m-0 small" th:text="'Disp: ' + ${helado.unidades}"></p>
+                                        <button type="button" class="btn btn-sm btn-primary mt-1"
+                                            onclick="prepararParaAgregar(this.closest('.helado-card'))">Agregar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+
+                    <div class="formVender row align-items-end mb-3">
+                        <div class="col-md-6">
+                            <label for="heladoSeleccionadoNombre" class="form-label">Helado a agregar:</label>
+                            <input id="heladoSeleccionadoNombre" class="form-control" type="text" disabled readonly
+                                placeholder="Seleccione un helado de arriba">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="unidadesParaAgregar" class="form-label">Cantidad:</label>
+                            <input id="unidadesParaAgregar" name="unidadesParaAgregar" class="form-control"
+                                type="number" value="1" min="1">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success w-100"
+                                onclick="confirmarAgregarAlCarrito()">Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    <div id="errorCarrito" class="alert alert-warning" style="display:none;"></div>
+
+
+                    <div class="mt-4">
+                        <h4>Carrito de Compra</h4>
+                        <ul id="listaCarrito" class="list-group mb-3">
+                            <li class="list-group-item">El carrito está vacío.</li>
+                        </ul>
+                    </div>
+
+
+                    <fieldset class="border p-3 mt-4">
+                        <legend class="w-auto px-2">Datos del Cliente</legend><br>
+                        <div id="mensajeBusquedaCliente" style="display:none;" class="alert mt-2"></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="cedula" class="form-label">Cédula:</label>
+                                <div class="input-group">
+                                    <input id="cedula" name="cedula" class="form-control" type="text" required>
+                                    <button type="button" class="btn btn-outline-primary"
+                                        onclick="buscarCliente()">Buscar</button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="nombreCliente" class="form-label">Nombre Cliente:</label>
+                                <input id="nombreCliente" name="nombreCliente" class="form-control" type="text"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-2">
+                                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                                <input id="fechaNacimiento" name="fechaNacimiento" class="form-control" type="date"
+                                    required>
+                            </div>
+                            <div class="col-md-6 mb-2">
+                                <label for="telefono" class="form-label">Teléfono:</label>
+                                <input id="telefono" name="telefono" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <label for="metodoPago" class="form-label">Método de Pago:</label>
+                            <select id="metodoPago" name="metodoPago" class="form-select form-select-lg mb-3">
+                                <option value="efectivo">Efectivo</option>
+                                <option value="tarjeta">Tarjeta</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="totalAPagarDisplay" class="form-label">Total a Pagar:</label>
+                            <input id="totalAPagarDisplay" class="form-control form-control-lg" type="text"
+                                value="0.00 pesos" disabled readonly>
+                            <input type="hidden" id="totalAPagar" name="totalAPagar" value="0.00">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer mt-3">
+                    <button onclick="window.location.href='/logout'" type="button" class="btn btn-secondary">Cerrar
+                        Sesión</button>
+                    <button type="submit" class="btn btn-primary">Vender</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        
+        let carrito = [];
+
+        let heladoTemporalParaAgregar = null; // Para guardar datos del helado seleccionado antes de confirmar cantidad
+
+        function prepararParaAgregar(cardElement) {
+            const nombre = cardElement.getAttribute('data-nombre');
+            const unidadesDisponibles = parseInt(cardElement.getAttribute('data-unidades'));
+            const precio = parseFloat(cardElement.getAttribute('data-precio'));
+            const tipo = cardElement.getAttribute('data-tipo-helado');
+
+            document.getElementById('heladoSeleccionadoNombre').value = `${nombre} (Disp: ${unidadesDisponibles})`;
+            document.getElementById('unidadesParaAgregar').value = "1"; // Resetear a 1
+            document.getElementById('unidadesParaAgregar').max = unidadesDisponibles; // Establecer max
+
+            heladoTemporalParaAgregar = { nombre, unidadesDisponibles, precio, tipo };
+
+            // Quitar borde de seleccion de otras tarjetas y aplicar a la actual
+            document.querySelectorAll('.helado-card.border-primary').forEach(c => c.classList.remove('border-primary', 'border-3'));
+            cardElement.classList.add('border-primary', 'border-3');
+        }
+
+        function confirmarAgregarAlCarrito() {
+            if (!heladoTemporalParaAgregar) {
+                mostrarError('errorCarrito', "Primero selecciona un helado de la lista de arriba haciendo clic en 'Agregar'.");
+                return;
+            }
+
+            const cantidad = parseInt(document.getElementById('unidadesParaAgregar').value);
+            const { nombre, unidadesDisponibles, precio, tipo } = heladoTemporalParaAgregar;
+
+            if (isNaN(cantidad) || cantidad <= 0) {
+                mostrarError('errorCarrito', "Por favor, ingresa una cantidad válida.");
+                return;
+            }
+
+            const itemExistenteEnCarrito = carrito.find(item => item.nombre === nombre);
+            const cantidadYaEnCarrito = itemExistenteEnCarrito ? itemExistenteEnCarrito.cantidad : 0;
+
+            if (cantidad > unidadesDisponibles) {
+                mostrarError('errorCarrito', `Stock insuficiente para ${nombre}. Solo hay ${unidadesDisponibles} unidades en total.`);
+                return;
+            }
+            if (cantidadYaEnCarrito + cantidad > unidadesDisponibles) {
+                mostrarError('errorCarrito', `No puedes agregar ${cantidad} de ${nombre}. Ya tienes ${cantidadYaEnCarrito} en carrito y solo hay ${unidadesDisponibles} disponibles.`);
+                return;
+            }
+
+
+            if (itemExistenteEnCarrito) {
+                itemExistenteEnCarrito.cantidad += cantidad;
+            } else {
+                carrito.push({ nombre, cantidad, precio, unidadesDisponiblesOriginal: unidadesDisponibles, tipo });
+            }
+
+            renderizarCarrito();
+            actualizarTotalAPagarGeneral();
+
+            // Limpiar seleccion temporal
+            document.getElementById('heladoSeleccionadoNombre').value = "";
+            document.getElementById('unidadesParaAgregar').value = "1";
+            document.querySelectorAll('.helado-card.border-primary').forEach(c => c.classList.remove('border-primary', 'border-3'));
+            heladoTemporalParaAgregar = null;
+        }
+
+
+        function renderizarCarrito() {
+            const listaCarritoElement = document.getElementById('listaCarrito');
+            listaCarritoElement.innerHTML = ''; // Limpiar
+
+            if (carrito.length === 0) {
+                listaCarritoElement.innerHTML = '<li class="list-group-item">El carrito está vacío.</li>';
+            } else {
+                carrito.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                    li.innerHTML = `
+                        <div class="d-flex align-items-center">
+                            <img src="/img/${item.tipo}.png" onerror="this.onerror=null; this.src='/img/default.png';" alt="${item.nombre}">
+                            <div>
+                                <strong>${item.nombre}</strong><br>
+                                <small>$${item.precio.toFixed(2)} c/u</small>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-sm btn-outline-secondary" type="button" onclick="ajustarCantidad(${index}, -1)">-</button>
+                            <input type="number" class="form-control form-control-sm mx-1 cantidad-input-carrito" value="${item.cantidad}" min="1" max="${item.unidadesDisponiblesOriginal}" onchange="actualizarCantidadInput(${index}, this.value)">
+                            <button class="btn btn-sm btn-outline-secondary" type="button" onclick="ajustarCantidad(${index}, 1)">+</button>
+                            <button class="btn btn-sm btn-danger ms-2" type="button" onclick="eliminarDelCarrito(${index})">&times;</button>
+                        </div>
+                        <div>
+                            <strong>$${(item.precio * item.cantidad).toFixed(2)}</strong>
+                        </div>
+                    `;
+                    listaCarritoElement.appendChild(li);
+                });
+            }
+            actualizarTotalAPagarGeneral();
+        }
+
+        function actualizarCantidadInput(index, nuevaCantidadStr) {
+            const item = carrito[index];
+            if (!item) return;
+            const nuevaCantidad = parseInt(nuevaCantidadStr);
+
+            if (isNaN(nuevaCantidad) || nuevaCantidad < 1) {
+                // Si el valor no es válido, revertir al valor anterior o a 1.
+                if (nuevaCantidad > item.unidadesDisponiblesOriginal) {
+                    mostrarError('errorCarrito', `Stock máximo para ${item.nombre} es ${item.unidadesDisponiblesOriginal}.`);
+                    // Revertir visualmente el input
+                    document.querySelector(`#listaCarrito li:nth-child(${index + 1}) input`).value = item.cantidad;
+                    return;
+                }
+                item.cantidad = 1;
+            } else if (nuevaCantidad > item.unidadesDisponiblesOriginal) {
+                mostrarError('errorCarrito', `Stock máximo para ${item.nombre} es ${item.unidadesDisponiblesOriginal}.`);
+                document.querySelector(`#listaCarrito li:nth-child(${index + 1}) input`).value = item.cantidad; //revert
+                return;
+            } else {
+                item.cantidad = nuevaCantidad;
+            }
+            renderizarCarrito(); // Re-renderizar para actualizar totales y visuales
+        }
+
+        function ajustarCantidad(index, delta) {
+            const item = carrito[index];
+            if (!item) return;
+
+            const nuevaCantidad = item.cantidad + delta;
+
+            if (nuevaCantidad <= 0) {
+                eliminarDelCarrito(index);
+            } else if (nuevaCantidad > item.unidadesDisponiblesOriginal) {
+                mostrarError('errorCarrito', `No puedes agregar más ${item.nombre}. Solo hay ${item.unidadesDisponiblesOriginal} unidades disponibles en total.`);
+            } else {
+                item.cantidad = nuevaCantidad;
+            }
+            renderizarCarrito();
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            renderizarCarrito();
+        }
+
+        function actualizarTotalAPagarGeneral() {
+            let subtotalCarrito = 0;
+            carrito.forEach(item => {
+                subtotalCarrito += item.precio * item.cantidad;
+            });
+
+            const metodoPago = document.getElementById('metodoPago').value;
+            let totalGeneral = subtotalCarrito;
+
+            if (metodoPago === "tarjeta" && subtotalCarrito > 0) {
+                totalGeneral += totalGeneral * 0.03; // 3% recargo
+            }
+
+            const totalAPagarDisplay = document.getElementById('totalAPagarDisplay');
+            const totalAPagarHidden = document.getElementById('totalAPagar');
+
+            totalAPagarDisplay.value = totalGeneral.toFixed(2) + " pesos";
+            totalAPagarHidden.value = totalGeneral.toFixed(2);
+        }
+
+        function mostrarError(elementId, mensaje) {
+            const errorDiv = document.getElementById(elementId);
+            if (errorDiv) {
+                errorDiv.textContent = mensaje;
+                errorDiv.style.display = "block";
+                setTimeout(() => {
+                    errorDiv.style.display = "none";
+                }, 4000);
+            }
+        }
+
+        function mostrarMensajeBusqueda(mensaje, tipo) {
+            const mensajeDiv = document.getElementById("mensajeBusquedaCliente");
+            mensajeDiv.className = `alert alert-${tipo} mt-2`;
+            mensajeDiv.textContent = mensaje;
+            mensajeDiv.style.display = "block";
+
+            setTimeout(() => {
+                mensajeDiv.style.display = "none";
+            }, 3000);
+        }
+
+        document.getElementById('metodoPago').addEventListener('change', actualizarTotalAPagarGeneral);
+
+        document.getElementById('ventaForm').addEventListener("submit", function (e) {
+            const form = e.target;
+            // Limpiar inputs de carrito previos
+            form.querySelectorAll('input[name="nombresHelados"], input[name="unidadesVenderLista"]').forEach(input => input.remove());
+
+            if (carrito.length === 0) {
+                e.preventDefault();
+                mostrarError('errorGlobal', "El carrito está vacío. Agrega al menos un helado para vender.");
+                return;
+            }
+
+            // Validar campos de cliente obligatorios
+            const nombreCliente = document.getElementById('nombreCliente').value;
+            const cedulaCliente = document.getElementById('cedula').value;
+            const fechaNacimientoCliente = document.getElementById('fechaNacimiento').value;
+
+            if (!nombreCliente.trim() || !cedulaCliente.trim() || !fechaNacimientoCliente.trim()) {
+                e.preventDefault();
+                mostrarError('errorGlobal', "Por favor, completa todos los datos obligatorios del cliente (Nombre, Cédula, Fecha de Nacimiento).");
+                return;
+            }
+
+
+            actualizarTotalAPagarGeneral(); // Asegurar que el total este al dia
+            const totalValidar = parseFloat(document.getElementById('totalAPagar').value);
+            if (isNaN(totalValidar) || totalValidar <= 0) {
+                e.preventDefault();
+                mostrarError('errorGlobal', "El total a pagar no es válido o es cero. Revisa el carrito.");
+                return;
+            }
+
+            carrito.forEach(item => {
+                const nombreInput = document.createElement('input');
+                nombreInput.type = 'hidden';
+                nombreInput.name = 'nombresHelados';
+                nombreInput.value = item.nombre;
+                form.appendChild(nombreInput);
+
+                const unidadesInput = document.createElement('input');
+                unidadesInput.type = 'hidden';
+                unidadesInput.name = 'unidadesVenderLista';
+                unidadesInput.value = item.cantidad;
+                form.appendChild(unidadesInput);
+            });
+        });
+
+        function filtrarPorTipo() {
+            const tipoSeleccionado = document.getElementById('tipoFiltro').value;
+            const columnas = document.querySelectorAll('.helado-col');
+
+            columnas.forEach(col => {
+                const tipoHelado = col.getAttribute('data-tipo');
+                if (tipoSeleccionado === "todos" || tipoHelado === tipoSeleccionado) {
+                    col.style.display = "block";
+                } else {
+                    col.style.display = "none";
+                }
+            });
+        }
+
+        function buscarCliente() {
+            const cedula = document.getElementById("cedula").value;
+
+            if (!cedula) {
+                mostrarMensajeBusqueda("Ingrese una cédula para buscar.", "warning");
+                return;
+            }
+
+            fetch(`/buscarCliente?cedula=${encodeURIComponent(cedula)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        if (response.status === 404) {
+                            return response.json().then(err => { throw new Error(err.error || "Cliente no encontrado") });
+                        }
+                        throw new Error(`Error del servidor: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(cliente => {
+                    document.getElementById("nombreCliente").value = cliente.nombre;
+                    document.getElementById("fechaNacimiento").value = cliente.fechaNacimiento;
+                    document.getElementById("telefono").value = cliente.telefono || "";
+                    mostrarMensajeBusqueda("Cliente encontrado y datos cargados.", "success");
+                })
+                .catch(error => {
+                    document.getElementById("nombreCliente").value = "";
+                    document.getElementById("fechaNacimiento").value = "";
+                    document.getElementById("telefono").value = "";
+                    mostrarMensajeBusqueda(error.message, "danger");
+                });
+        }
+
+
+        // Ocultar mensajes de alerta despues de un tiempo
+        document.addEventListener("DOMContentLoaded", function () {
+            const thymeleafAlerts = document.querySelectorAll(".alert-success, .alert-danger");
+            thymeleafAlerts.forEach(alert => {
+                if (alert.textContent.trim() !== "" && !alert.id) {
+                    setTimeout(() => {
+                        alert.style.display = "none";
+                    }, 5000);
+                }
+            });
+            renderizarCarrito(); // Renderizar carrito vacio al cargar
+        });
+    </script>
+
+</body>
+
+</html>

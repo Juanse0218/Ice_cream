@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="login-contenedor">
+            <div class="cont-izquierdo">
+                <h2 id="titulo">INICIO DE SESIÓN</h2>
+                <form action="/login" method="post">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="username" name="username">
+
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="password" name="password">
+
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+                <div th:if="${error}" style="color:red; margin-top: 10px;">
+                    <p th:text="${error}"></p>
+                </div>
+                <p class="registro-link">¿No está registrado? <a href="/register">Hágalo aquí</a></p>
+                <div th:if="${param.error}">
+                    <p style="color: red;">Usuario o contraseña incorrectos</p>
+                </div>
+            </div>
+            <div class="cont-derecho">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

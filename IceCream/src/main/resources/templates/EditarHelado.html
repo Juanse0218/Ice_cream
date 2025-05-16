@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Editar Helado</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/CSS_EditarHelado.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="background">
+    <div class="box">
+        <form id="editarForm" method="post" action="/editarHelado">
+            <h2>Editar Helado</h2>
+
+            <select id="ubicacionSelect" name="ubicacion" class="form-select form-select-lg mb-3"
+                    aria-label="Large select example" required>
+                <option value="" selected>Elija la ubicación</option>
+                <option value="almacen">Almacen Interno</option>
+                <option value="heladeria">Helados en el mostrador</option>
+            </select>
+
+            <select id="heladoSelect" name="nombreOriginal" class="form-select form-select-lg mb-3"
+                    aria-label="Large select example" disabled required>
+                <option value="" selected>Elija un Helado</option>
+            </select>
+
+            <label class="form-label">Nombre:</label>
+            <input id="nombreHelado" name="nombreNuevo" class="form-control form-control-lg" type="text"
+                   aria-label=".form-control-lg example" disabled required>
+
+            <label class="form-label">Sabor:</label>
+            <input id="saborHelado" name="sabor" class="form-control form-control-lg" type="text"
+                   aria-label=".form-control-lg example" disabled required>
+
+            <label class="form-label">Tipo:</label>
+            <input id="tipoHelado" name="tipo" class="form-control form-control-lg" type="text"
+                    aria-label=".form-control-lg example" disabled required>
+
+            <label class="form-label">Unidades:</label>
+            <input id="unidadesHelado" name="unidades" class="form-control form-control-lg" type="number"
+                   aria-label=".form-control-lg example" disabled required>
+
+            <label class="form-label">Precio:</label>
+            <input id="precioHelado" name="precio" class="form-control form-control-lg" type="number"
+                   aria-label=".form-control-lg example" disabled required>
+
+            <div class="modal-footer">
+                <div id="error" th:if="${error}" class="alert alert-danger" role="alert">
+                    <p th:text="${error}"></p>
+                </div>
+                <button onclick="window.location.href='/home'" type="button" class="btn btn-secondary">Regresar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Cuando se selecciona la ubicación, se obtienen los helados
+        $('#ubicacionSelect').on('change', function () {
+            let ubicacion = $(this).val();
+
+            limpiarCampos();
+
+            if (ubicacion !== '') {
+                $.ajax({
+                    url: '/obtenerHeladosPorUbicacion',
+                    method: 'POST',
+                    data: {ubicacion: ubicacion},
+                    success: function (data) {
+                        $('#heladoSelect').empty().append('<option value="" selected>Elija un Helado</option>');
+                        data.forEach(function (helado) {
+                            $('#heladoSelect').append('<option value="' + helado.nombre + '">' + helado.nombre + '</option>');
+                        });
+                        $('#heladoSelect').prop('disabled', false);
+                        $('#heladoSelect').prop('required', true);
+
+                    }
+                });
+            } else {
+                $('#heladoSelect').empty().append('<option value="" selected>Elija un Helado</option>').prop('disabled', true);
+            }
+        });
+
+        // Cuando se selecciona un helado, se obtienen sus datos
+        $('#heladoSelect').on('change', function () {
+            let nombreHelado = $(this).val();
+            let ubicacion = $('#ubicacionSelect').val();
+
+            if (nombreHelado === '') {
+                limpiarCampos();
+            } else {
+                $.ajax({
+                    url: '/obtenerDatosHelado',
+                    method: 'POST',
+                    data: {nombreHelado: nombreHelado, ubicacion: ubicacion},
+                    success: function (data) {
+                        if (data) {
+                            $('#nombreHelado').val(data.nombre);
+                            $('#saborHelado').val(data.sabor);
+                            $('#tipoHelado').val(data.tipo);
+                            $('#unidadesHelado').val(data.unidades);
+                            $('#precioHelado').val(data.precio);
+                        }
+                        habilitarCampos();
+                    }
+                });
+            }
+        });
+
+        function limpiarCampos() {
+            $('#nombreHelado').val('').prop('disabled', true);
+            $('#saborHelado').val('').prop('disabled', true);
+            $('#tipoHelado').val('').prop('disabled', true);
+            $('#unidadesHelado').val('').prop('disabled', true);
+            $('#precioHelado').val('').prop('disabled', true);
+        }
+
+        function habilitarCampos() {
+            $('#nombreHelado').prop('disabled', false);
+            $('#saborHelado').prop('disabled', false);
+            $('#tipoHelado').prop('disabled', false);
+            $('#unidadesHelado').prop('disabled', false);
+            $('#precioHelado').prop('disabled', false);
+        }
+    });
+</script>
+</body>
+</html>

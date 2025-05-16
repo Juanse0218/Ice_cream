@@ -1,0 +1,134 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    background-image: url("/img/home.webp");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 0;
+    overflow-y: auto;
+}
+
+.box {
+    background-color: white;
+    width: 80%;
+    max-width: 1100px;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.titulo img {
+    width: 400px;
+
+    margin-bottom: 20px;
+
+}
+
+.marca {
+    max-width: 125px;
+    max-height: 125px;
+}
+
+.formVender {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.modal-footer button {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    margin-bottom: 1px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+#modal-footer button {
+    margin-left: 10px;
+}
+
+#error {
+    padding: 0;
+    height: 5vh;
+}
+
+.helado-img {
+    height: 80px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.helado-card {
+    height: 100%;
+    font-size: 0.9rem;
+    border-radius: 10px;
+}
+
+.helado-card:hover {
+    transform: scale(1.03);
+}
+
+.helado-card.border-primary {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilos específicos para el campo de Datos del Cliente */
+fieldset {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+}
+
+legend {
+    width: auto;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.row .formVender {
+    margin-bottom: 10px;
+}
+
+/* Estilos para el carrito  */
+.helado-card {
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+}
+
+.helado-card:hover {
+    transform: scale(1.03);
+}
+
+#listaCarrito .list-group-item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.cantidad-input-carrito {
+    width: 60px;
+    /* Ajusta el ancho según necesidad */
+    text-align: center;
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ice Cream</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styleHome.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="box">
+
+            <h1 class="titulo">
+                <img src="/img/titulo.png" alt="">
+            </h1>
+
+            <div class="containerBotones">
+                <!-- Boton Agregar helados al almacen -->
+                <button type="button" class="botonIcono" data-bs-toggle="modal" data-bs-target="#modalAlmacen">
+                    <img src="/img/almacen.png" alt="Icono">
+                    <p id="pAgregar">Agregar Helados <br>al almacen interno</p>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalAlmacen" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title fs-5" id="staticBackdropLabel">Agregar Helados</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/agregarAlAlmacen" method="POST">
+
+                                    <label class="form-label" for="nombre">Nombre:</label>
+                                    <input class="form-control form-control-lg" type="text"
+                                        aria-label=".form-control-lg example" id="nombre" name="nombre" required>
+
+                                    <label class="form-label" for="sabor">Sabor:</label>
+                                    <input class="form-control form-control-lg" type="text"
+                                        aria-label=".form-control-lg example" id="sabor" name="sabor" required>
+
+                                    <label class="form-label" for="sabor">Tipo:</label>
+                                    <input class="form-control form-control-lg" type="text"
+                                        aria-label=".form-control-lg example" id="tipo" name="tipo" required>
+
+                                    <label class="form-label" for="precio">Precio:</label>
+                                    <input class="form-control form-control-lg" type="number"
+                                        aria-label=".form-control-lg example" id="precio" name="precio"
+                                        datatype="number" min="1" required>
+
+                                    <label class="form-label" for="unidades">Unidades:</label>
+                                    <input class="form-control form-control-lg" type="number"
+                                        aria-label=".form-control-lg example" id="unidades" name="unidades"
+                                        datatype="number" min="1" required><br>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boton Mover a Heladeria -->
+                <button type="button" class="botonIcono" onclick="location.href='/moverHelado'">
+                    <img src="/img/heladeria.png" alt="Icono">
+                    <p>Mover helados al <br>Mostrador</p>
+                </button>
+
+
+                <!-- Boton Vender Helados 
+            <button type="button" class="botonIcono" data-bs-toggle="modal" onclick="location.href='/venderHelados'">
+                <img src="/img/venderHelado.png" alt="Icono">
+                <p>Vender Helados</p>
+            </button> -->
+
+                <!-- Boton Mostrar Helados -->
+                <button type="button" class="botonIcono" data-bs-toggle="modal" data-bs-target="#modalMostrar">
+                    <img src="/img/mostrarHelado.png" alt="Icono">
+                    <p>Mostrar Helados</p>
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="modalMostrar" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" id="modalInterno">
+                            <div class="modal-header">
+                                <h2 class="modal-title fs-5" id="staticBackdropLabel">Mostrar Helados</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body" id="iconosDeMostrar">
+                                <a href="/heladosAlmacen" class="botonIcono">
+                                    <img src="/img/almacen.png" alt="Icono">
+                                    <p>Almacen</p>
+                                </a>
+                                <a href="/heladosHeladeria" class="botonIcono">
+                                    <img src="/img/heladeria.png" alt="Icono">
+                                    <p>Heladeria</p>
+                                </a>
+                                <a href="/reporte" class="botonIcono">
+                                    <img src="/img/reporte.png" alt="Icono">
+                                    <p>Reporte</p>
+                                </a>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boton Editar Helados -->
+                <button type="button" class="botonIcono" onclick="location.href='/editarHelado'">
+                    <img src="/img/editarHelado.png" alt="Icono">
+                    <p>Editar Helados</p>
+                </button>
+
+                <!-- Boton Eliminar Helados -->
+                <button type="button" class="botonIcono" data-bs-toggle="modal"
+                    onclick="location.href='/eliminarHelado'">
+                    <img src="/img/eliminarHelado.png" alt="Icono">
+                    <p>Eliminar Helados</p>
+                </button>
+
+                <!-- Boton Cerrar Sesion -->
+                <a href="/logout" class="botonIcono">
+                    <img src="/img/cerrarSesion.png" alt="Icono">
+                    <p>Cerrar Sesion</p>
+                </a>
+            </div>
+            <img src="/img/helado cool.png" class="marca" alt="">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

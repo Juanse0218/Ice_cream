@@ -1,0 +1,54 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    background-image: url("/img/home.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box {
+    background-color: white;
+    width: 60%;
+    height: 95%;
+    margin: 10px;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.modal-footer button{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+input {
+    margin-bottom: 3px;
+}
+#error {
+    justify-items: center;
+    padding: 0;
+    margin-top: 10px;
+    p {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+    }
+}

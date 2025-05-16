@@ -1,0 +1,596 @@
+[{
+  "_id": {
+    "$oid": "67b908e98ff1a96701763662"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 13,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67b90a478ff1a96701763663"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 8,
+  "ubicacion": "heladeria",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67b90a5b8ff1a96701763664"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67b90a5b8ff1a96701763665"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4caa06e5c24b1f1d9a6c"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3500,
+  "unidades": 13,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4da606e5c24b1f1d9a6d"
+  },
+  "nombre": "mentaFresca",
+  "sabor": "menta",
+  "tipo": "paleta",
+  "precio": 2600,
+  "unidades": 24,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4e0006e5c24b1f1d9a6e"
+  },
+  "nombre": "vainillaDeluxe",
+  "sabor": "vainilla",
+  "tipo": "paleta",
+  "precio": 3000,
+  "unidades": 42,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4e2306e5c24b1f1d9a6f"
+  },
+  "nombre": "limonVerano",
+  "sabor": "limon",
+  "tipo": "paleta",
+  "precio": 2500,
+  "unidades": 26,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4e3c06e5c24b1f1d9a70"
+  },
+  "nombre": "duraznoMagico",
+  "sabor": "durazno",
+  "tipo": "cono",
+  "precio": 3300,
+  "unidades": 34,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4e5506e5c24b1f1d9a71"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2500,
+  "unidades": 11,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ca4ed506e5c24b1f1d9a72"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 21,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67ccd139ef681a7c342e4e28"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2500,
+  "unidades": 6,
+  "ubicacion": "heladeria",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d08e5fbf90c6746d0f8599"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 7725,
+  "unidades": 3,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d08e5fbf90c6746d0f859a"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 7725,
+  "unidades": 3,
+  "ubicacion": "vendido_tarjeta",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d08e76bf90c6746d0f859b"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3500,
+  "unidades": 9,
+  "ubicacion": "heladeria",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d08e87bf90c6746d0f859c"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 7000,
+  "unidades": 2,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d08e87bf90c6746d0f859d"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 7000,
+  "unidades": 2,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d0a847bf90c6746d0f859e"
+  },
+  "nombre": "mango",
+  "sabor": "mango",
+  "tipo": "paleta",
+  "precio": 2800,
+  "unidades": 2,
+  "ubicacion": "almacen",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d0a8bbbf90c6746d0f85a0"
+  },
+  "nombre": "mango",
+  "sabor": "mango",
+  "precio": 2884,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67d0a8bbbf90c6746d0f85a1"
+  },
+  "nombre": "mango",
+  "sabor": "mango",
+  "precio": 2884,
+  "unidades": 1,
+  "ubicacion": "vendido_tarjeta",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f85cfab538f21361db5a05"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f85cfab538f21361db5a06"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f85d43b538f21361db5a08"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f85d43b538f21361db5a09"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f85d8eb538f21361db5a0b"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2575,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f85d8eb538f21361db5a0c"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2575,
+  "unidades": 1,
+  "ubicacion": "vendido_tarjeta",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f860f1b538f21361db5a10"
+  },
+  "nombre": "mentaFresca",
+  "sabor": "menta",
+  "tipo": "paleta",
+  "precio": 2600,
+  "unidades": 12,
+  "ubicacion": "heladeria",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86146b538f21361db5a11"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 17,
+  "ubicacion": "heladeria",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f861b58033f37a1806343b"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f861b68033f37a1806343c"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f863e3a2e0d868f0e13af1"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f863e4a2e0d868f0e13af2"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f868ce8308c112294e73a2"
+  },
+  "nombre": "mentaFresca",
+  "sabor": "menta",
+  "tipo": "paleta",
+  "precio": 2678,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f868ce8308c112294e73a3"
+  },
+  "nombre": "mentaFresca",
+  "sabor": "menta",
+  "tipo": "paleta",
+  "precio": 2678,
+  "unidades": 1,
+  "ubicacion": "vendido_tarjeta",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f868e78308c112294e73a4"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3605,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f868e78308c112294e73a5"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3605,
+  "unidades": 1,
+  "ubicacion": "vendido_tarjeta",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86bf19417e35a2bb23235"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2500,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86bf19417e35a2bb23236"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2500,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86cb19417e35a2bb23237"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2500,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86cb19417e35a2bb23238"
+  },
+  "nombre": "moraCielo",
+  "sabor": "mora",
+  "tipo": "galleta",
+  "precio": 2500,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86dc2cf40893ec0b498d5"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86dc2cf40893ec0b498d6"
+  },
+  "nombre": "fresaPasion",
+  "sabor": "fresa",
+  "tipo": "cono",
+  "precio": 3000,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86ff1cf40893ec0b498d7"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3500,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f86ff1cf40893ec0b498d8"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3500,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f87025cf40893ec0b498d9"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3500,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f87025cf40893ec0b498da"
+  },
+  "nombre": "chococono",
+  "sabor": "chocolate",
+  "tipo": "cono",
+  "precio": 3500,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f9390a922b1b009ce11b49"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 1,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f9390a922b1b009ce11b4a"
+  },
+  "nombre": "carameloCremoso",
+  "sabor": "caramelo",
+  "tipo": "vaso",
+  "precio": 3100,
+  "unidades": 1,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f943d2922b1b009ce11b4b"
+  },
+  "nombre": "mentaFresca",
+  "sabor": "menta",
+  "tipo": "paleta",
+  "precio": 5200,
+  "unidades": 2,
+  "ubicacion": "vendido",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+},
+{
+  "_id": {
+    "$oid": "67f943d2922b1b009ce11b4c"
+  },
+  "nombre": "mentaFresca",
+  "sabor": "menta",
+  "tipo": "paleta",
+  "precio": 5200,
+  "unidades": 2,
+  "ubicacion": "vendido_efectivo",
+  "_class": "com.example.IceCream_SpringBoot.model.HeladoDocument"
+}]
