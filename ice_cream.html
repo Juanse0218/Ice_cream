@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE CREAM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+            padding-top: 70px;
+            background-color: #7aefcc;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        .navbar {
+            background-color: black !important;
+            height: 70px;
+        }
+
+        .navbar-brand img {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .navbar .buttom {
+            color: #fff;
+            background-color: #000000;
+            border-radius: 5%;
+            border-color: #fff;
+            margin-left: 15px;
+            padding: 2px;
+            width: 120px;
+        }
+
+        .navbar .buttom:hover {
+            color: #66e0ab;
+            border-color: #7aefcc;
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #7aefcc !important;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+
+        #home {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            width: 100%;
+            padding: 10px 30px;
+            background: url('home.webp') no-repeat center center;
+            background-size: cover;
+            margin-top: -90px;
+            transition: all 0.3s ease-out;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        #home .home-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #home h1 {
+            text-align: left;
+            padding-top: 50px;
+            margin-left: 60px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            bottom: 40px;
+        }
+
+        #home p {
+            margin: 50px 0px;
+            margin-left: 60px;
+            position: relative;
+            bottom: 40px;
+            font-weight: 400;
+        }
+
+        .home-buttons {
+            margin-left: 60px;
+        }
+
+        .home-buttons button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 200px;
+            position: relative;
+            bottom: 40px;
+        }
+
+        .home-buttons button:hover {
+            border: 2px solid #7aefcc;
+            color: #7aefcc;
+            transform: scale(1.05);
+        }
+
+        .imagenhelado {
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+            transition: all 0.6s ease;
+        }
+
+        section:not(#home) {
+            width: 100%;
+            padding: 10px 30px;
+            background-color: white;
+            color: #333;
+        }
+        #about-us {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            gap: 40px;
+        }
+
+        #about-us>div {
+            flex: 1;
+        }
+
+        #about-us p {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #about-us h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: #000;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative;
+            bottom: 90px;
+        }
+
+        #about-us img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #services {
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+
+        #services h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: #000;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #66e0ab;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .service-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.55);
+            transition: background-color 0.3s ease;
+        }
+
+        .service-card:hover .overlay {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card .content {
+            position: relative;
+            z-index: 2;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .service-card h5 {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #f1f1f1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+        }
+
+
+        #our-team h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: #000;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 180px;
+            margin-bottom: 20px;
+            position: relative;
+            bottom: 60px;
+        }
+
+        .text-center {
+            position: relative;
+            bottom: 40px;
+        }
+
+        .team-card {
+            border: 2px solid #66e0ab;
+            border-radius: 15px;
+            padding: 25px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .team-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .team-card h2 {
+            color: #000;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .team-card p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .menu-card {
+            background-color: white;
+            border: 2px solid #66e0ab;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-card img {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .menu-card h2 {
+            color: #0d6efd;
+        }
+
+        .menu-card button {
+            background-color: #66e0ab;
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 8px;
+            margin-top: 10px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .menu-card button:hover {
+            background-color: #66e0ab;
+            transform: scale(1.1);
+        }
+
+        #testimonials {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        #testimonials h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: #000;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            padding: 50px;
+        }
+
+        #testimonials button {
+            margin: 50px 0px;
+            width: 150px;
+            height: auto;
+        }
+
+        .testimonial-card {
+            border: 2px solid #66e0ab;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-card h5 {
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+
+        footer {
+            background: black;
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        section h1,
+        section p,
+        section img,
+        .menu-card {
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+            opacity: 0;
+        }
+
+        section.visible h1,
+        section.visible p,
+        section.visible img,
+        section.visible .menu-card {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #home.shrink h1,
+        #home.shrink p {
+            transform: scale(0.8);
+            opacity: 0.9;
+        }
+
+        #home.shrink .home-buttons button {
+            transform: scale(0.6);
+            opacity: 0.9;
+        }
+
+        #home.shrink .imagenhelado {
+            transform: scale(0.6);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="heladoicon01.png" alt="#">
+                    ICE CREAM
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link active" id="nav1" href="#">Home</a>
+                        <a class="nav-link" id="nav2" href="#">About us</a>
+                        <a class="nav-link" id="nav4" href="#">Services & products</a>
+                        <a class="nav-link" id="nav3" href="#">Our team</a>
+                        <a class="nav-link" id="nav5" href="#">Testimonials</a>
+                        <button class="buttom">Iniciar sesión</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="home-content">
+            <div>
+                <h1>ICE CREAM</h1>
+                <p>Un software de gestión diseñado especialmente para heladerías, que optimiza el control
+                    administrativo, el almacenamiento de datos y la toma de decisiones, reduciendo pérdidas económicas y
+                    mejorando la eficiencia del negocio.</p>
+                <div class="home-buttons">
+                    <button>Iniciar Sesión</button>
+                </div>
+            </div>
+            <div>
+                <img class="imagenhelado" src="heladoCool.png" alt="paletadehelado">
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us">
+        <div>
+            <h1>About Us</h1>
+            <p>Somos un grupo de desarrolladores con la iniciativa de crear Ice Cream, un software diseñado para
+                optimizar la gestión interna de las heladerías. Nuestro objetivo es ofrecer una herramienta moderna y
+                accesible que facilite el control de inventarios, la administración de ventas y la reducción de pérdidas
+                económicas.</p>
+        </div>
+        <div>
+            <img src="about us ice cream.png" alt="persona interactuando">
+        </div>
+    </section>
+
+    <section id="services">
+        <h1>Nuestros Servicios</h1>
+        <p class="text-center mb-5">
+            Ice Cream ofrece un conjunto de herramientas diseñadas para optimizar la gestión integral de heladerías.
+        </p>
+
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="service-card" style="background-image: url('gestion.jpg');">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h5>Gestión de Ventas</h5>
+                            <p>
+                                Controla todas las transacciones del negocio de forma rápida y segura.
+                                El panel del vendedor permite registrar ventas, aplicar descuentos y actualizar la
+                                disponibilidad de productos en tiempo real.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="service-card" style="background-image: url('inventario.jpg');">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h5>Manejo de Inventario</h5>
+                            <p>
+                                Supervisa el stock de productos, materias primas y toppings.
+                                El sistema actualiza automáticamente las existencias después de cada venta, evitando
+                                pérdidas por desabastecimiento o exceso.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="service-card" style="background-image: url('databases.jpg');">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h5>Doble Base de Datos</h5>
+                            <p>
+                                Ice Cream combina la potencia de <strong>MySQL</strong> y <strong>MongoDB</strong> para
+                                ofrecer un sistema híbrido,
+                                garantizando seguridad en los datos y flexibilidad en el manejo de la información.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="service-card" style="background-image: url('powerbi.png');">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h5>Panel Estadístico</h5>
+                            <p>
+                                Visualiza métricas clave de tu negocio con una interfaz integrada de <strong>Power
+                                    BI</strong>.
+                                Gráficos y estadísticas que ayudan a tomar decisiones basadas en datos reales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+             
+                <div class="col-md-4">
+                    <div class="service-card" style="background-image: url('vendedor.jpg');">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h5>Panel de Vendedor</h5>
+                            <p>
+                                Una interfaz intuitiva para gestionar ventas, revisar inventario y consultar productos
+                                de manera eficiente desde un único lugar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+           
+                <div class="col-md-4">
+                    <div class="service-card" style="background-image: url('redis.webp');">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h5>Memoria RAM Virtual</h5>
+                            <p>
+                                Implementa una <strong>memoria en caché</strong> que acelera las consultas y operaciones
+                                frecuentes, garantizando un rendimiento superior y tiempos de respuesta más rápidos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="our-team">
+        <h1>Our Team</h1>
+        <p class="text-center">El grupo de estudiantes de sexto semestre del programa de Desarrollo de Software en la
+            Universidad Tecnológico Comfenalco, comprometidos con el desarrollo del proyecto <strong>Ice Cream</strong>.
+        </p>
+
+        <div class="container mt-5">
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-3 col-sm-6">
+                    <div class="menu-card team-card">
+                        <img src="perfil2.png" alt="Team member">
+                        <h6>Jean Paul Benavides</h6>
+                        <h2>Base de Datos</h2>
+                        <p>Encargado del mantenimiento, estructura y gestión de las bases de datos del sistema Ice
+                            Cream.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="menu-card team-card">
+                        <img src="perfil2.png" alt="Team member">
+                        <h6>Dilan Osorio</h6>
+                        <h2>Backend Developer</h2>
+                        <p>Responsable del desarrollo de la lógica interna del sistema y la conexión con la base de
+                            datos.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="menu-card team-card">
+                        <img src="perfil2.png" alt="Team member">
+                        <h6>Oscar Taborda</h6>
+                        <h2>Frontend Developer</h2>
+                        <p>Diseña e implementa la interfaz de usuario del sistema, asegurando una experiencia atractiva
+                            e intuitiva.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="menu-card team-card">
+                        <img src="perfil2.png" alt="Team member">
+                        <h6>Sebastián Guzmán</h6>
+                        <h2>Documentación y Lógica</h2>
+                        <p>Encargado de la documentación del proyecto y la definición de la lógica de negocio del
+                            sistema Ice Cream.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h1>Testimonials</h1>
+        <p class="text-center mb-5">
+            Lo que nuestros usuarios opinan sobre <strong>Ice Cream</strong>.
+            Valoramos cada experiencia y seguimos mejorando para ofrecer el mejor servicio.
+        </p>
+
+        <div class="container">
+            <div class="row g-4 justify-content-center" id="testimonials-container"></div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-success" id="toggle-testimonials-btn">Ver más</button>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <h5>© 2025 Ice Cream — Proyecto académico Universidad Tecnológico Comfenalco.</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+  
+        const testimonios = [
+            { nombre: "Lucía Martínez", comentario: "¡Excelente servicio y los mejores helados!", estrellas: 5 },
+            { nombre: "Carlos Gómez", comentario: "Buen sabor pero podrían mejorar los conos.", estrellas: 3 },
+            { nombre: "Andrea Ruiz", comentario: "Todo delicioso, repetiré seguro.", estrellas: 4 },
+            { nombre: "Miguel Torres", comentario: "Rápida atención y sabores variados.", estrellas: 5 },
+            { nombre: "Sandra López", comentario: "Me encantó el ambiente del local.", estrellas: 4 },
+            { nombre: "Fernando Pérez", comentario: "Los precios un poco altos, pero vale la pena.", estrellas: 4 },
+            { nombre: "Juliana Ramírez", comentario: "Excelente software para la gestión del negocio.", estrellas: 5 },
+            { nombre: "Luis Hernández", comentario: "Fácil de usar y muy completo.", estrellas: 5 }
+        ];
+
+        let mostrarTodo = false;
+        const container = document.getElementById("testimonials-container");
+        const toggleBtn = document.getElementById("toggle-testimonials-btn");
+
+        function renderTestimonios() {
+            container.innerHTML = "";
+            const lista = mostrarTodo ? testimonios : testimonios.slice(0, 3);
+
+            lista.forEach(t => {
+                const estrellas = "★".repeat(t.estrellas) + "☆".repeat(5 - t.estrellas);
+                container.innerHTML += `
+            <div class="col-md-4 col-sm-6">
+                <div class="testimonial-card">
+                    <h5>${t.nombre}</h5>
+                    <p>"${t.comentario}"</p>
+                    <div class="testimonial-stars">${estrellas}</div>
+                </div>
+            </div>
+        `;
+            });
+
+            toggleBtn.textContent = mostrarTodo ? "Ver menos" : "Ver más";
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            mostrarTodo = !mostrarTodo;
+            renderTestimonios();
+        });
+
+        renderTestimonios();
+
+
+        const sections = { nav1: 'home', nav2: 'about-us', nav3: 'our-team', nav4: 'services', nav5: 'testimonials' };
+        for (const [navId, sectionId] of Object.entries(sections)) {
+            document.getElementById(navId).addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+
+        const boton3 = document.getElementById("boton3");
+        if (boton3) boton3.addEventListener("click", () => alert("Ir a servicios"));
+
+        const boton4 = document.getElementById("boton4");
+        if (boton4) boton4.addEventListener("click", () => alert("Ir a testimonios"));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        window.addEventListener('scroll', () => {
+            const home = document.getElementById('home');
+            if (window.scrollY > 210) {
+                home.classList.add('shrink');
+            } else {
+                home.classList.remove('shrink');
+            }
+        });
+    </script>
+</body>
+
+</html>
